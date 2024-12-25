@@ -51,13 +51,13 @@
     }
 
     .highlight {
-      color: #000;
+      color: #fff;
       font-weight:  900;
       animation: highlightFlash 1s infinite;
       width: 100%;
       text-align: center;
       background-image: -webkit-linear-gradient(315deg, #704308 0%, #ffce08 40%, #e1ce08 60%, #704308 100%);
-      background-image: linear-gradient(135deg, #704308 0%, #ffce08 40%, #e1ce08 60%, #704308 100%);
+      background-image: linear-gradient(135deg, #704308 0%, #e9bd0f 40%, #e1ce08 60%, #704308 100%);
     }
 
     @keyframes highlightFlash {
@@ -159,7 +159,7 @@
       shuffledChoices = shuffleArray([...choices]); // ランダムな順番で選択肢を生成
       targetIndex = shuffledChoices.indexOf(targetValue); // ターゲットインデックスを取得
 
-      const totalItems = shuffledChoices.length * 2; // 無限ループのため2倍表示
+      const totalItems = shuffledChoices.length * 2;
       for (let i = 0; i < totalItems; i++) {
         const item = document.createElement('div');
         item.className = 'roulette-item';
@@ -224,10 +224,10 @@
       const centerOffset = containerHeight / 2 - itemHeight / 2; // 中央オフセット
 
       let slowingDown = false;
-100
+
       // 減速アニメーション
       const slowdown = setInterval(() => {
-        if (!slowingDown && interval >= 2500) {
+        if (!slowingDown && interval >= 250) {
           slowingDown = true; // 減速が終わったら停止準備に移行
         }
 
@@ -242,7 +242,7 @@
             finalizeStop(targetIndex); // 停止時の処理を呼び出す
           }
         } else {
-          interval += 5; // 徐々に速度を遅くする
+          interval += 25; // 徐々に速度を遅くする
           clearInterval(animationInterval);
           animationInterval = setInterval(() => {
             position -= 25; // スクロール速度
@@ -255,7 +255,7 @@
             }
           }, interval);
         }
-      }, 50); // 減速アニメーションの更新間隔
+      }, 250); // 減速アニメーションの更新間隔
     });
 
     function finalizeStop(targetIndex) {
